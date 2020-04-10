@@ -39,5 +39,7 @@ t.test(subset(pohnpei$PRCP, pohnpei$DATE %in% 1952:1985), subset(pohnpei$PRCP, p
 #Calculate return period for rainfall > 200 inches 
 
 prcp_high = ifelse(pohnpei$PRCP >= 200, 1, 0)
+
+#Test Juan
 ```
 
