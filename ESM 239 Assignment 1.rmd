@@ -12,6 +12,32 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 library(ggplot2)
-install.packages("chon")
+library(chron)
+
+pohnpei = read.csv("Pohnpei_FSM_TMP_PRECP.csv")
+```
+
+Precipitation 
+```{r}
+#plot precipitation data
+
+prcp = ggplot(pohnpei, aes(DATE, pohnpei$PRCP))+geom_line()+ labs(y="Yearly Average Precipitation (inches)", x="Date") + theme_classic() + stat_smooth(method = "lm", col = "blue")
+
+#Run linear regression for precipitation data
+
+prcp_slp = lm(PRCP~DATE, data = pohnpei)
+summary(prcp_slp)
+
+#Value of the slope is -0.17 inches/year; however, this is not statistically significant. p-value = 0.2482
+
+#Run statistical testing
+
+t.test(subset(pohnpei$PRCP, pohnpei$DATE %in% 1952:1985), subset(pohnpei$PRCP, pohnpei$DATE %in% 1986:2019))
+
+#There is not a significant difference in means p-value = 0.4027
+
+#Calculate return period for rainfall > 200 inches 
+
+prcp_high = ifelse(pohnpei$PRCP >= 200, 1, 0)
 ```
 
