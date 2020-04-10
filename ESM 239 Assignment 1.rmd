@@ -43,3 +43,8 @@ prcp_high = ifelse(pohnpei$PRCP >= 200, 1, 0)
 #Test Juan
 ```
 
+Temperature
+```{r}
+
+```
+
