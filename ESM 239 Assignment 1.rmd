@@ -1,0 +1,12 @@
+---
+title: "ESM 239 Assignment 1"
+author: "Juan Espinoza"
+date: "4/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
