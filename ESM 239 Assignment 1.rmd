@@ -66,8 +66,19 @@ pohnpei_tavg_yearly_plot
 clim.mwy = pohnpei %>% group_by(DATE) %>% summarize(tmax=mean(TMAX), tmin=mean(TMIN))
 
 #Plot TMIN and TMAX with trend lines
-ggplot(clim.mwy, aes(x=dt, tmax))+geom_point(col="red")+
+pohnpei_min_max = ggplot(clim.mwy, aes(x=DATE, tmax))+geom_point(col="red")+
   scale_y_continuous(limits=c(min(clim.mwy$tmin), max(clim.mwy$tmax)))+
-geom_point(data=clim.mwy, aes(x=dt, tmin), col="blue")
+geom_point(data=clim.mwy, aes(x=DATE, tmin), col="blue")
+
+pohnpei_min_max =pohnpei_min_max+stat_smooth (method="lm", col="red")
+
+pohnpei_min_max
+
+pohnpei_min_max+ stat_smooth(data=clim.mwy, aes(x=DATE,tmin), col="blue", method="lm")
+```
+
+Temperature STAT
+```{r}
+
 ```
 
