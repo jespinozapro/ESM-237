@@ -79,6 +79,14 @@ pohnpei_min_max+ stat_smooth(data=clim.mwy, aes(x=DATE,tmin), col="blue", method
 
 Temperature STAT
 ```{r}
+#linear regression on min max
+res_min=lm(tmin~DATE, data=clim.mwy)
 
+summary(res_min)
+#
+
+res_max=lm(tmax~DATE, data=clim.mwy)
+
+summary(res_max)
 ```
 
