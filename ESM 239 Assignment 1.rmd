@@ -46,7 +46,8 @@ prcp_high = ifelse(pohnpei$PRCP >= 200, 1, 0)
 
 Temperature
 ```{r}
-#Started by 
+#Started by plotting the average temperature for the entire time period
+
 pohnpei_tavg_yearly_plot <-ggplot(pohnpei, aes(x = DATE, y = TAVG)) +
   geom_point(color = "#5792CC") +
   theme_classic() +
@@ -60,7 +61,13 @@ pohnpei_tavg_yearly_plot <-ggplot(pohnpei, aes(x = DATE, y = TAVG)) +
 
 pohnpei_tavg_yearly_plot
 
+#Summarize data for average for TMIN and TMAX
+
 clim.mwy = pohnpei %>% group_by(DATE) %>% summarize(tmax=mean(TMAX), tmin=mean(TMIN))
 
+#Plot TMIN and TMAX with trend lines
+ggplot(clim.mwy, aes(x=dt, tmax))+geom_point(col="red")+
+  scale_y_continuous(limits=c(min(clim.mwy$tmin), max(clim.mwy$tmax)))+
+geom_point(data=clim.mwy, aes(x=dt, tmin), col="blue")
 ```
 
