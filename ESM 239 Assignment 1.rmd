@@ -107,7 +107,18 @@ confint(res_max, "DATE", level=0.95)
 # 2.5% = 0.0172953
 #97.5% = 0.03111489
 
+#t.test for average, min, and max temperature
 
+t.test(subset(pohnpei$TAVG, pohnpei$DATE %in% 1952:1985), subset(pohnpei$TAVG, pohnpei$DATE %in% 1986:2019))
 
+#Average temp: t = -2.3249, df = 64.092, = p-value = 0.02326
+
+t.test(subset(clim.mwy$tmin, clim.mwy$DATE %in% 1952:1985), subset(clim.mwy$tmin, clim.mwy$DATE %in% 1986:2019))
+
+#Min temp: t = 0.27361, df = 44.9363, p-value = 0.7856
+
+t.test(subset(clim.mwy$tmax, pohnpei$DATE %in% 1952:1985), subset(clim.mwy$tmax, clim.mwy$DATE %in% 1986:2019))
+
+#Max temp: t = -5.2845, df = 56.792, p-value = 2.079e-06
 ```
 
