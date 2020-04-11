@@ -83,10 +83,14 @@ Temperature STAT
 res_min=lm(tmin~DATE, data=clim.mwy)
 
 summary(res_min)
-#
+
+#Multiple R-squared = 0.02968, Adjusted R-squared = 0.01498, F-Statistic = 2.019 on 1 and 66 DF, p-value = 0.1601
 
 res_max=lm(tmax~DATE, data=clim.mwy)
 
 summary(res_max)
+
+#Multiple R-squared = 
+
 ```
 
