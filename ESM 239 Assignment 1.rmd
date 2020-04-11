@@ -75,6 +75,12 @@ pohnpei_min_max =pohnpei_min_max+stat_smooth (method="lm", col="red")
 pohnpei_min_max
 
 pohnpei_min_max+ stat_smooth(data=clim.mwy, aes(x=DATE,tmin), col="blue", method="lm")
+
+#close up of tmin
+ggplot(clim.mwy, aes(x=DATE, y=tmin)) + stat_summary(fun.y="mean", geom="point", col="red", size=4)+theme(axis.text=element_text(size=14, face="bold"), axis.title=element_text(size=14, face="bold")) + geom_smooth(method="lm")
+
+#close up of tmax
+ggplot(clim.mwy, aes(x=DATE, y=tmax)) + stat_summary(fun.y="mean", geom="point", col="red", size=4)+theme(axis.text=element_text(size=14, face="bold"), axis.title=element_text(size=14, face="bold")) + geom_smooth(method="lm")
 ```
 
 Temperature STAT
@@ -86,11 +92,22 @@ summary(res_min)
 
 #Multiple R-squared = 0.02968, Adjusted R-squared = 0.01498, F-Statistic = 2.019 on 1 and 66 DF, p-value = 0.1601
 
+confint(res_min, "DATE", level=0.95)
+
+#2.5% = -0.003729429
+#97.5% = 0.02213612
 res_max=lm(tmax~DATE, data=clim.mwy)
 
 summary(res_max)
 
-#Multiple R-squared = 
+#Multiple R-squared = 0.4257, Adjusted R-squared = 0.417, F-statistic = 48.92 on 1 and 66 DF, p-value = 1.6610e-09
+
+confint(res_max, "DATE", level=0.95)
+
+# 2.5% = 0.0172953
+#97.5% = 0.03111489
+
+
 
 ```
 
