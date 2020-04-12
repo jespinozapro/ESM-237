@@ -130,13 +130,13 @@ pohnpei_tmin_2019_plot <-ggplot(pohnpei_2019, aes(x = DATE, y = tmin)) +
 pohnpei_tmin_2019_plot
 
 pohnpei_tmax_2019_plot <-ggplot(pohnpei_2019, aes(x = DATE, y = tmax)) +
-  geom_point(color = "#5792CC") + geom_line(color = "#5792CC") +
+  geom_point(color = "black") + geom_line(color = "black") +
   theme_classic() +
   ggtitle("Pohnpei Tmax Temperatures (1986 - 2019)") +
   xlab("Year") +
   ylab("Average Daily Minimum Temperature (°F)") +
   scale_x_continuous() +
-  geom_smooth(method = "lm", col = "red") +
+  geom_smooth(method = "lm", col = "blue") +
   theme(plot.title = element_text(size=12)) +
   scale_y_continuous()
 
@@ -145,6 +145,15 @@ pohnpei_tmax_2019_plot
 
 Temperature STAT
 ```{r}
+
+#linear regression on average
+
+res_avg=lm(TAVG~DATE, data=pohnpei)
+
+summary(res_avg)
+
+#Multiple R-squared = 0.2464, Adjusted R-squared = 0.235, F-Statistic = 2.019 on 1 and 66 DF, p-value = 0.1601
+
 #linear regression on min max
 res_min=lm(tmin~DATE, data=clim.mwy)
 
@@ -160,7 +169,7 @@ res_max=lm(tmax~DATE, data=clim.mwy)
 
 summary(res_max)
 
-#Multiple R-squared = 0.4257, Adjusted R-squared = 0.417, F-statistic = 48.92 on 1 and 66 DF, p-value = 1.6610e-09
+#Multiple R-squared = 0.4257, Adjusted R-squared = 0.417, F-statistic = 21.58 on 1 and 66 DF, p-value = 1.671e-05
 
 confint(res_max, "DATE", level=0.95)
 
