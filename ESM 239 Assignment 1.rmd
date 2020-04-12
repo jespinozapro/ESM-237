@@ -130,13 +130,13 @@ pohnpei_tmin_2019_plot <-ggplot(pohnpei_2019, aes(x = DATE, y = tmin)) +
 pohnpei_tmin_2019_plot
 
 pohnpei_tmax_2019_plot <-ggplot(pohnpei_2019, aes(x = DATE, y = tmax)) +
-  geom_point(color = "#5792CC") +
+  geom_point(color = "#5792CC") + geom_line(color = "#5792CC") +
   theme_classic() +
   ggtitle("Pohnpei Tmax Temperatures (1986 - 2019)") +
   xlab("Year") +
   ylab("Average Daily Minimum Temperature (°F)") +
   scale_x_continuous() +
-  geom_smooth(method = "lm", col = "#5792CC") +
+  geom_smooth(method = "lm", col = "red") +
   theme(plot.title = element_text(size=12)) +
   scale_y_continuous()
 
