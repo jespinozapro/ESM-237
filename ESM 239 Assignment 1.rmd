@@ -49,13 +49,13 @@ Temperature
 #Started by plotting the average temperature for the entire time period
 
 pohnpei_tavg_yearly_plot <-ggplot(pohnpei, aes(x = DATE, y = TAVG)) +
-  geom_point(color = "#5792CC") +
+  geom_point(color = "black") + geom_line(color = "black") +
   theme_classic() +
   ggtitle("Pohnpei Average Temperatures (1952 - 2019)") +
   xlab("Year") +
-  ylab("Average Daily Minimum Temperature (°F)") +
+  ylab("Average Yearly Temperature (°F)") +
   scale_x_continuous(limits = c(1970, 2018)) +
-  geom_smooth(method = "lm", col = "#5792CC") +
+  geom_smooth(method = "lm", col = "blue") +
   theme(plot.title = element_text(size=12)) +
   scale_y_continuous()
 
