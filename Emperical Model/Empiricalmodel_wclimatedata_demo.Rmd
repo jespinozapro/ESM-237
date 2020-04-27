@@ -19,7 +19,7 @@ library(lubridate)
 library(ncdf4)
 library(RColorBrewer)
 library(lattice)
-setwd("~/Box Sync/Courses_UCSB/ESM237_Spring2020/")
+setwd(".")
 
 ```
 
@@ -33,11 +33,11 @@ I have used a slightly different approach for dealing with the time coordinates 
 
 ```{r readdata}
 # path and filename for data
-ncpath <- "~/Box Sync/Courses_UCSB/ESM237_Spring2020/"
-ncname20th <- "b.e11.B20TRC5CNBDRD.f09_g16.102.cam.h0.TS.192001-200512"  
-ncfname20th <- paste(ncpath, ncname20th, ".nc", sep="")
+ncpath <- "."
+ncname20th <- "b.e11.B20TRC5CNBDRD.f09_g16.102.cam.h0.TS.199001-200512"  
+ncfname20th <- paste(ncname20th, ".nc", sep="")
 ncname21st <- "b.e11.BRCP85C5CNBDRD.f09_g16.102.cam.h0.TS.208501-210012"  
-ncfname21st <- paste(ncpath, ncname21st, ".nc", sep="")
+ncfname21st <- paste(ncname21st, ".nc", sep="")
 dname <- "TS"  # this is the name of the variable you want to look at
 
 ncin <- nc_open(ncfname20th)
@@ -51,7 +51,7 @@ nlat <- dim(lat)
 # Time coordinate for 20th century part of run
 time20th <- ncvar_get(ncin,"time")
 tunits20th <- ncatt_get(ncin,"time","units")
-origin="1/15/1920"
+origin="1/15/1990"
 enddate="12/15/2005"
 rtime20th <- seq.dates(origin, enddate, by="months")
 
