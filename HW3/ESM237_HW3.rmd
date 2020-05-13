@@ -96,3 +96,15 @@ ens32avg_rcp85_mort
 
 ```
 
+```{r}
+lm_wateryr_linear = lm(mortality~year, data = wateryr_rcp85_mort)
+summary(lm_wateryr_linear)
+
+
+lm_avg_rcp45_linear = lm(mortality~year, data = ens32avg_rcp45_mort)
+summary(lm_avg_rcp45_linear)
+
+lm_avg_rcp85_linear = lm(mortality~year, data = ens32avg_rcp85_mort)
+summary(lm_avg_rcp45_linear)
+```
+
